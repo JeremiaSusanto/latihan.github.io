@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-color-mode="light">
   <head>
     <!-- Required meta tags -->
     <meta charset="utf-8" />
@@ -40,7 +40,6 @@
                   <input type="checkbox" id="checkbox" />
                   <div class="slider round"></div>
                 </label>
-                <em>Enable Dark Mode!</em>
               </div>
             </li>
             <!--             <li class="nav-item dropdown">
@@ -56,6 +55,7 @@
         </div>
       </div>
     </nav>
+    <hr />
     <!-- Navbar end -->
 
     <!-- Jumbotron -->
@@ -65,7 +65,7 @@
       <p class="lead">Weeb | Newbie WebDeveloper</p>
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
         <path
-          fill="#fff"
+          fill="var(--section-color)"
           fill-opacity="1"
           d="M0,160L48,176C96,192,192,224,288,229.3C384,235,480,213,576,192C672,171,768,149,864,165.3C960,181,1056,235,1152,245.3C1248,256,1344,224,1392,208L1440,192L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"
         ></path>
@@ -92,7 +92,7 @@
       </div>
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
         <path
-          fill="#e2edff"
+          fill="var(--container-bg)"
           fill-opacity="1"
           d="M0,128L48,128C96,128,192,128,288,160C384,192,480,256,576,240C672,224,768,128,864,117.3C960,107,1056,181,1152,213.3C1248,245,1344,235,1392,229.3L1440,224L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"
         ></path>
@@ -153,7 +153,7 @@
       </div>
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
         <path
-          fill="#fff"
+          fill="var(--section-color)"
           fill-opacity="1"
           d="M0,64L48,101.3C96,139,192,213,288,213.3C384,213,480,139,576,138.7C672,139,768,213,864,208C960,203,1056,117,1152,80C1248,43,1344,53,1392,58.7L1440,64L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"
         ></path>
@@ -200,7 +200,7 @@
       </div>
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
         <path
-          fill="#0d6efd"
+          fill="var(--nav-color)"
           fill-opacity="1"
           d="M0,224L48,218.7C96,213,192,203,288,218.7C384,235,480,277,576,277.3C672,277,768,235,864,197.3C960,160,1056,128,1152,138.7C1248,149,1344,203,1392,229.3L1440,256L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"
         ></path>
@@ -208,7 +208,7 @@
     </section>
     <!-- contact end -->
 
-    <footer class="bg-primary text-white text-center" style="padding-bottom: 5px">
+    <footer class="text-white text-center" style="padding-bottom: 5px">
       <p>Created with <i class="bi bi-suit-heart-fill"></i> by <a class="text-white fw-bold" href="https:/instagram.com/jeremia_s_">Jeremia Susanto</a></p>
     </footer>
 
@@ -220,6 +220,8 @@
       const btnKirim = document.querySelector(".btn-kirim");
       const btnLoading = document.querySelector(".btn-loading");
       const myAlert = document.querySelector(".my-alert");
+      const checkbox = document.querySelector("#checkbox");
+      const html = document.querySelector("html");
 
       form.addEventListener("submit", (e) => {
         e.preventDefault();
@@ -240,6 +242,16 @@
             console.log("Success!", response);
           })
           .catch((error) => console.error("Error!", error.message));
+      });
+      // ketika diklik
+
+      checkbox.addEventListener("click", function () {
+        //cek color mode now, abis tuh ubah
+        if (html.dataset.colorMode === "light") {
+          html.dataset.colorMode = "dark";
+        } else {
+          html.dataset.colorMode = "light";
+        }
       });
     </script>
   </body>

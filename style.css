@@ -1,37 +1,59 @@
 :root {
   --nav-color: #0d6efd;
+  --section-color: white;
+  --text-color: #333;
+  --container-bg: #e2edff;
 }
-[data-theme="dark"] {
+html[data-color-mode="dark"] {
   --nav-color: #333;
+  --section-color: #555;
+  --text-color: lightblue;
+  --container-bg: #444;
 }
-nav {
+h1,
+h2 {
+  color: var(--text-color);
+}
+.lead {
+  color: var(--text-color);
+}
+#about p {
+  color: var(--text-color);
+}
+#contact label {
+  color: var(--text-color);
+}
+nav,
+footer {
   background-color: var(--nav-color);
+}
+.navbar ul li a {
+  color: var(--text-color);
 }
 .jumbotron {
   padding-top: 5rem;
-  background-color: #e2edff;
+  background-color: var(--container-bg);
 }
 
 #gallery {
-  background-color: #e2edff;
+  background-color: var(--container-bg);
 }
 section {
   padding-top: 5rem;
+  background-color: var(--section-color);
 }
 
 .theme-switch-wrapper {
   display: flex;
   align-items: center;
-}
-em {
-  margin-left: 10px;
-  font-size: 1rem;
+  margin-top: 5px;
+  margin-left: 5px;
 }
 .theme-switch {
   display: inline-block;
-  height: 34px;
+  height: 28px;
   position: relative;
-  width: 60px;
+  width: 50px;
 }
 
 .theme-switch input {
@@ -53,11 +75,11 @@ em {
   background-color: #fff;
   bottom: 4px;
   content: "";
-  height: 26px;
+  height: 20px;
   left: 4px;
   position: absolute;
   transition: 0.4s;
-  width: 26px;
+  width: 20px;
 }
 
 input:checked + .slider {
@@ -65,7 +87,7 @@ input:checked + .slider {
 }
 
 input:checked + .slider:before {
-  transform: translateX(26px);
+  transform: translateX(22px);
 }
 
 .slider.round {
@@ -74,4 +96,7 @@ input:checked + .slider:before {
 
 .slider.round:before {
   border-radius: 50%;
+}
+a {
+  color: var(--text-color);
 }
