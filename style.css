@@ -35,14 +35,14 @@ footer {
   background-color: var(--container-bg);
 }
 
-#gallery {
+#projects {
   background-color: var(--container-bg);
 }
 section {
   padding-top: 5rem;
   background-color: var(--section-color);
 }
-
+/* darkmode */
 .theme-switch-wrapper {
   display: flex;
   align-items: center;
@@ -97,6 +97,14 @@ input:checked + .slider:before {
 .slider.round:before {
   border-radius: 50%;
 }
+/* darkmode end */
 a {
   color: var(--text-color);
+}
+.gallery-img {
+  width: 100%;
+}
+
+#gallery .row > * {
+  padding: 0;
 }
