@@ -42,8 +42,12 @@
               <div class="theme-switch-wrapper">
                 <label class="theme-switch" for="checkbox">
                   <input type="checkbox" id="checkbox" />
-                  <div class="slider round"></div>
+                  <i class="bi bi-sun-fill sun d-none"> </i>
+                  <i class="bi bi-moon-fill moon"></i>
+                  <!--                   <div class="slider round"></div> -->
                 </label>
+                <!--                 <i class="bi bi-sun-fill sun d-none"> </i>
+                <i class="bi bi-moon-fill moon"></i> -->
               </div>
             </li>
             <!--             <li class="nav-item dropdown">
@@ -316,6 +320,8 @@
       const myAlert = document.querySelector(".my-alert");
       const checkbox = document.querySelector("#checkbox");
       const html = document.querySelector("html");
+      const moon = document.querySelector(".moon");
+      const sun = document.querySelector(".sun");
 
       form.addEventListener("submit", (e) => {
         e.preventDefault();
@@ -343,8 +349,12 @@
         //cek color mode now, abis tuh ubah
         if (html.dataset.colorMode === "light") {
           html.dataset.colorMode = "dark";
+          moon.classList.toggle("d-none");
+          sun.classList.toggle("d-none");
         } else {
           html.dataset.colorMode = "light";
+          sun.classList.toggle("d-none");
+          moon.classList.toggle("d-none");
         }
       });
     </script>

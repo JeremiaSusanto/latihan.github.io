@@ -3,12 +3,14 @@
   --section-color: white;
   --text-color: #333;
   --container-bg: #e2edff;
+  --sun-moon: #444;
 }
 html[data-color-mode="dark"] {
   --nav-color: #333;
   --section-color: #555;
   --text-color: lightblue;
   --container-bg: #444;
+  --sun-moon: #f9d224;
 }
 h1,
 h2 {
@@ -30,6 +32,14 @@ footer {
 .navbar ul li a {
   color: var(--text-color);
 }
+nav i {
+  font-size: 18px;
+}
+.moon,
+.sun {
+  padding-left: 7px;
+  color: var(--sun-moon);
+}
 .jumbotron {
   padding-top: 5rem;
   background-color: var(--container-bg);
@@ -46,21 +56,25 @@ section {
 .theme-switch-wrapper {
   display: flex;
   align-items: center;
-  margin-top: 5px;
-  margin-left: 5px;
+  margin: 5px;
+  width: 100%;
+  /*   border: 1px solid var(--text-color); */
+  border-radius: 10px;
 }
 .theme-switch {
   display: inline-block;
-  height: 28px;
   position: relative;
-  width: 50px;
+  width: 100%;
+  align-items: center;
+  margin-left: 5px;
 }
 
 .theme-switch input {
   display: none;
+  width: 100%;
 }
 
-.slider {
+/* .slider {
   background-color: #ccc;
   bottom: 0;
   cursor: pointer;
@@ -83,7 +97,7 @@ section {
 }
 
 input:checked + .slider {
-  background-color: #66bb6a;
+  background-color: lightblue;
 }
 
 input:checked + .slider:before {
@@ -96,7 +110,7 @@ input:checked + .slider:before {
 
 .slider.round:before {
   border-radius: 50%;
-}
+} */
 /* darkmode end */
 a {
   color: var(--text-color);
