@@ -3,7 +3,7 @@
   --section-color: white;
   --text-color: #333;
   --container-bg: #e2edff;
-  --sun-moon: #444;
+  --sun-moon: #555;
 }
 html[data-color-mode="dark"] {
   --nav-color: #333;
