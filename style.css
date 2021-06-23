@@ -12,6 +12,9 @@ html[data-color-mode="dark"] {
   --container-bg: #444;
   --sun-moon: #f9d224;
 }
+* {
+  opacity: 1;
+}
 h1,
 h2 {
   color: var(--text-color);
@@ -43,6 +46,12 @@ nav i {
 .jumbotron {
   padding-top: 5rem;
   background-color: var(--container-bg);
+  background: linear-gradient(rgba(2, 2, 2, 0.5), rgba(0, 0, 0, 0.5)), url(img/jumbo2.png) fixed;
+  background-size: cover;
+}
+.jumbotron h1,
+.lead {
+  color: lightblue;
 }
 
 #projects {
@@ -67,6 +76,7 @@ section {
   width: 100%;
   align-items: center;
   margin-left: 5px;
+  cursor: pointer;
 }
 
 .theme-switch input {
