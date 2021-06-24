@@ -49,6 +49,12 @@ nav i {
   background: linear-gradient(rgba(2, 2, 2, 0.5), rgba(0, 0, 0, 0.5)), url(img/jumbo2.png) fixed;
   background-size: cover;
 }
+@media only screen and (max-width: 1080px) {
+  .jumbotron {
+    background-position: center;
+    background-position-x: 60%;
+  }
+}
 .jumbotron h1,
 .lead {
   color: lightblue;
