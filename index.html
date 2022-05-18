@@ -120,30 +120,48 @@
               <div class="card-body">
                 <p class="card-text">
                   <textarea rows="" cols="">
-                    header.php
+                    main.js
 
-                <h4 align="right"><a href="logout.php">Logout</a></h4>
-                <table align="center" width="70%">
-                    <tr>
-                        <td width="180px">
-                            <img src="icon/icon.png" alt="" height="150px">
-                        </td>
-                        <td>
-                            <h1>PEDULI DIRI</h1>
-                            <p>Catatan Perjalanan</p>
-                            <p>
-                                <a href="home.php">Home</a>
-                                <a href="catatan.php">Catatan Perjalanan</a>
-                                <a href="isi.php">Isi Data</a>
-                            </p>
-                        </td>
-                    </tr>
-                </table>
-                </textarea>
-                </p>
-              </div>
-            </div>
-          </div>
+                function urutkan(urut){
+                    var selectedValue   = urut.value;
+                    sortTable(selectedValue);
+                }
+
+                th = document.getElementsByTagName('th');
+
+                for(let c=0; c <th.length; c++){
+                    th[c].addEventListener('click', item(c))
+                }
+
+                function item(c){
+                    return function(){
+                        sortTable(c)
+                    }
+                }
+
+                function sortTable(c){
+                    var table, rows, switching, i, x, y, shouldSwitch;
+                    table       = document.getElementById("myTable");
+                    switching   = true;
+
+                    while(switching){
+                        switching   = false;
+                        rows        = table.rows;
+                        for(i = 1; i <(rows.length - 1); i++){
+                            shouldSwitch = false;
+                            x = rows[i].getElementsByTagName("TD")[c];
+                            y = rows[i + 1].getElementsByTagName("TD")[c];
+                            if(x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()){
+                                switching = true;
+                                break;
+                            }
+                        }
+                        if(shouldSwitch){
+                            rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+                            switching = true;
+                        }
+                    }
+                }
           <div class="col-md-4 mb-3">
             <div class="card" data-aos="flip-left" data-aos-duration="500" data-aos-delay="100">
               <img src="img/gallery/2.jpg" class="card-img-top" alt="gallery 2" />
