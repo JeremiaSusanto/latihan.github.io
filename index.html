@@ -148,7 +148,62 @@
             <div class="card" data-aos="flip-left" data-aos-duration="500" data-aos-delay="100">
               <img src="img/gallery/2.jpg" class="card-img-top" alt="gallery 2" />
               <div class="card-body">
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                <p class="card-text">
+                  <textarea disabled>
+                    <?php
+                    include "header.php";
+                    session_start();
+
+                    $user       = $_SESSION['username'];
+                    $datauser   = "catatan/$user.csv";
+
+                    if(!file_exists($datauser)){
+                        die('<center>Kamu belum mempunyai catatan</center>');
+                    } else {
+                        $file   = fopen($datauser, "r");
+                    }
+                    ?>
+
+                    <html>
+                        <body>
+                            <table align="center" border="1" width="50%">
+                                <td>
+                                    <a>Urutkan Sesuai</a>
+                                    <select id="urut" onclick="urutkan(this)">
+                                        <option value="0">Tanggal</option>
+                                        <option value="1">Waktu</option>
+                                        <option value="2">Lokasi</option>
+                                        <option value="3">Suhu</option>
+                                    </select>
+                                    <button type="submit" value="Urutkan">Urutkan</button>
+                                </td>
+                            </table>
+                            <br>
+                            <table align="center" border="1" width="50%" height="40%">
+                                <td>
+                                    <table border="1" align="center" width="70%" id="myTable">
+                                        <tr>
+                                            <th>Tanggal</th>
+                                            <th>Waktu</th>
+                                            <th>Lokasi</th>
+                                            <th>Suhu Tubuh</th>
+                                        </tr>
+                                        <?php
+                                        while(($row = fgets($file)) !=false){
+                                            $col    = explode(",", $row);
+                                            foreach($col as $data){
+                                                echo '<td>'. trim($data).'</td>';
+                                            }
+                                        }
+                                        ?>
+                                    </table>
+                                </td>
+                            </table>
+                            <script src="main.js"></script>
+                        </body>
+                    </html>
+                  </textarea>
+                </p>
               </div>
             </div>
           </div>
