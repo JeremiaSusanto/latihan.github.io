@@ -150,6 +150,7 @@
               <div class="card-body">
                 <p class="card-text">
                   <textarea disabled>
+                    catatan.php
                     <?php
                     include "header.php";
                     session_start();
@@ -211,7 +212,69 @@
             <div class="card" data-aos="flip-left" data-aos-duration="500" data-aos-delay="200">
               <img src="img/gallery/3.jpg" class="card-img-top" alt="gallery 3" />
               <div class="card-body">
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                <p class="card-text">
+                  <textarea disabled>
+                    isi.php
+                    
+                    <?php
+                    include 'header.php';
+                    session_start();
+
+                    if(isset($_POST['simpan'])){
+                        $tanggal    = $_POST['tanggal'];
+                        $waktu      = $_POST['waktu'];
+                        $lokasi     = $_POST['lokasi'];
+                        $suhu       = $_POST['suhu'];
+                        $nama       = $_SESSION['username'];
+                        $text       = $tanggal . "," . $waktu . "," . $lokasi . "," . $suhu . "</tr> \n";
+                        $data       = "catatan/$nama.csv";
+                        $dirname    = dirname($data);
+                        if(!is_dir($dirname)){
+                            mkdir($dirname, 0755, true);
+                        }
+                        $fp         = fopen($data, 'a+');
+                        if(fwrite($fp, $text)){
+                            echo '<script>alert("Data berhasil disimpan!");</script>';
+                        }
+
+
+                    }
+                    ?>
+
+                    <html>
+                        <body>
+                            <form action="" method="POST">
+                                <table align="center" border="1" width="50%" height="40%">
+                                    <td>
+                                        <table align="center">
+                                            <tr>
+                                                <td>Tanggal</td>
+                                                <td><input type="date" name="tanggal"></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Waktu</td>
+                                                <td><input type="time" name="waktu"></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Lokasi</td>
+                                                <td><input type="text" name="lokasi"></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Suhu Tubuh</td>
+                                                <td><input type="number" name="suhu"></td>
+                                            </tr>
+                                            <tr>
+                                                <td></td>
+                                                <td align="right"><button type="submit" name="simpan">Simpan</button></td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </table>
+                            </form>
+                        </body>
+                    </html>
+                  </textarea>
+                </p>
               </div>
             </div>
           </div>
