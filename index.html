@@ -151,6 +151,7 @@
                 <p class="card-text">
                   <textarea disabled>
                     catatan.php
+                    
                     <?php
                     include "header.php";
                     session_start();
@@ -282,7 +283,66 @@
             <div class="card" data-aos="flip-left" data-aos-duration="500" data-aos-delay="300">
               <img src="img/gallery/4.jpg" class="card-img-top" alt="gallery 4" />
               <div class="card-body">
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                <p class="card-text">
+                <textarea disabled>
+                  login.php
+                  
+                  <?php
+                    if(isset($_POST['daftar'])){
+                        $nik    = $_POST['nik'];
+                        $nama   = $_POST['nama'];
+                        $text   = $nik . "," . $nama . "\n";
+                        $fp     = fopen('config.csv', 'a+');
+
+                        if(fwrite($fp, $text)){
+                            echo '<script>alert("Berhasil Mendaftar!");</script>';
+                        }
+                    }
+                    else if(isset($_POST['masuk'])){
+                        $data       = file_get_contents("config.csv");
+                        $contents   = explode("\n", $data);
+
+                        foreach($contents as $values){
+                            $login  = explode(",", $values);
+                            $nik    = $login[0];
+                            $nama   = $login[1];
+
+                            if($nik == $_POST['nik'] && $nama == $_POST['nama']){
+                                session_start();
+                                $_SESSION['username'] = $nama;
+                                header("location: home.php");
+                            } else {
+                                echo '<script>alert("NIK atau Nama anda salah!");</script>';
+                            }
+                        }
+                    } 
+                    ?>
+
+                    <html>
+                        <body>
+                            <form action="" method="POST">
+                                <br><br><br><br>
+                            <table align="center">
+                                <tr>
+                                    <td>
+                                        <input type="number" name="nik" placeholder="NIK">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><input type="text" name="nama" placeholder="Nama Lengkap"></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <button type="submit" name="daftar">Saya Pengguna Baru</button>
+                                        <button type="submit" name="masuk">Masuk</button>
+                                    </td>
+                                </tr>
+                            </table>
+                            </form>
+                        </body>
+                    </html>
+                  </textarea>
+                </p>
               </div>
             </div>
           </div>
